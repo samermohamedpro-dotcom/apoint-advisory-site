@@ -411,6 +411,9 @@ html.anime .avance i::after { content: ''; position: absolute; right: -4px; top:
 .liste-offre { columns: 2 320px; column-gap: 48px; margin-top: 8px; }
 @media (max-width: 620px) { .offre-montants { grid-template-columns: 1fr; } }
 .fondateurs { margin-top: 36px; max-width: 33em; font-size: 19px; line-height: 1.45; }
+/* Le prochain créneau (13/09/2026) : sous les fondateurs, en retrait du prix — une
+   information, pas un slogan. */
+.creneau { margin-top: 12px; max-width: 33em; font-size: 16px; font-weight: 500; }
 .fondateurs::before, .garantie-sceau::before {
   content: ''; display: inline-block; width: 9px; height: 9px; border-radius: 50%;
   background: var(--or); margin-right: 12px; vertical-align: .12em;

@@ -210,6 +210,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .ligne-douleur { animation: resserrer linear both; animation-timeline: view(); animation-range: entry 20% cover 45%; }
+    /* Le temps que GSAP mesure la page : l'état final, celui qu'on voit en arrivant sur
+       la démonstration (site.js, 13/09/2026). */
+    html.mesure .ligne-douleur { animation: none; }
     @keyframes resserrer {
       from { font-variation-settings: 'wdth' 150, 'wght' 300; color: var(--pale); }
       to   { font-variation-settings: 'wdth' 62.5, 'wght' 700; color: var(--encre); }

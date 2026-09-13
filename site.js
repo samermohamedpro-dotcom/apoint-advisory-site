@@ -68,6 +68,18 @@
   /* La démonstration. `html.anime` fait passer la section de la liste à la
      scène épinglée : posée ICI, jamais dans le HTML, pour que sans script la
      page reste une liste lisible. */
+  /* Le point où la scène se fige se calcule sur la page telle qu'on la verra EN
+     ARRIVANT dessus (13/09/2026). Les phrases de la douleur, juste au-dessus,
+     partent larges et se resserrent en défilant : en haut de page, elles prennent
+     plus de lignes. Mesuré ce jour-là, en ligne : la scène se figeait jusqu'à
+     338 px trop tard et glissait sous l'en-tête (capture de Samer). Pendant chaque
+     calcul, `html.mesure` les pose dans leur état final (style.css) ; puis on
+     recalcule quand la police est là, et quand l'ouverture du titre a fini.
+     `mesures.mjs` § 6 bis le vérifie avec une police ralentie. */
+  ScrollTrigger.addEventListener('refreshInit', function () { document.documentElement.classList.add('mesure'); });
+  ScrollTrigger.addEventListener('refresh', function () { document.documentElement.classList.remove('mesure'); });
+  if (document.fonts) document.fonts.ready.then(function () { ScrollTrigger.refresh(); });
+
   var projection = $('.projection');
   if (projection) {
     document.documentElement.classList.add('anime');
@@ -105,7 +117,7 @@
         fontVariationSettings: ordinateur ? "'wdth' 150, 'wght' 300" : "'wdth' 90, 'wght' 400",
         opacity: 0, x: ordinateur ? -24 : 0,
         duration: 1.5, ease: 'expo.out', stagger: 0.09,
-        onComplete: function () { coupe.revert(); }
+        onComplete: function () { coupe.revert(); ScrollTrigger.refresh(); }
       });
       gsap.from('.hero-produit, .hero-bas', { opacity: 0, y: 12, duration: 1, ease: 'expo.out', stagger: 0.1, delay: 0.4 });
     });

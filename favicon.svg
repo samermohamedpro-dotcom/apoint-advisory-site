@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1357 1357" width="1357" height="1357">
-<!-- A. — monogramme A·POINT : le A en Helvetica Neue Light et le point d'or. -->
-<rect width="1357" height="1357" fill="#1a1a1a"/>
-<g transform="translate(208.0,1035.5) scale(1,-1)">
-<path fill="#ffffff" d="M173 280 316 646 454 280ZM281 714 -6 0H66L152 222H477L564 0H637L357 714Z"/>
-<circle fill="#d4af37" cx="872" cy="75" r="75"/>
+<!-- A. — monogramme A·POINT : le A au sommet en pointe et le point, affinés le 13/09/2026 (option B). -->
+<rect width="1357" height="1357" fill="#f7f7f5"/>
+<g transform="translate(197.4,1041.5) scale(1,-1)">
+<path fill="#1a1a1a" fill-rule="evenodd" d="M-6 0H64L156.4 212H474.6L567 0H637L315.5 738ZM180.8 268L315.5 577.3L450.2 268Z"/>
+<circle fill="#d4af37" cx="888.2" cy="68" r="80"/>
 </g>
 </svg>

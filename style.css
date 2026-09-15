@@ -306,60 +306,135 @@ html.anime .avance i::after { content: ''; position: absolute; right: -4px; top:
   background: var(--encre); padding: calc(var(--w) * .035);
   box-shadow: 0 40px 80px -30px rgba(26,26,26,.35);
 }
+/* REDESSINÉ LE 16/09/2026 — direction A, « comme une vraie app », choisie par Samer le
+   15/09/2026 (JOURNAL.md, 23 h 30) : barre d'état, bandeau d'encre, tuiles, cartes, boutons
+   pleins, onglets à icônes. Dessiné d'abord à 390 × 844 px dans le brouillon
+   `2-BRANDING/brouillons/2026-09-15-telephone/`, puis ramené ici en `em` : TOUT se mesure
+   sur la taille du texte de l'écran, elle-même fraction de `--w`. Le même dessin sert donc à
+   188 px (téléphone), 320 px (ordinateur), 300 px (PDF) et 390 px (annonce) sans une règle
+   de plus. Le texte de base passe de .047 à .036 × `--w` : l'écran porte trois fois plus de
+   choses qu'avant, et à .047 la synthèse sortait du bas.
+   Toutes les règles sont préfixées `.tel` : `.barre`, `.puce` ou `.lignes` sont des mots
+   que le reste du site ou le gabarit de l'annonce peuvent vouloir un jour. */
 .tel-ecran {
   position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: calc(var(--w) * .118);
-  background: var(--blanc); font-size: calc(var(--w) * .047); line-height: 1.3;
+  background: var(--papier); color: var(--encre); font-size: calc(var(--w) * .036); line-height: 1.3;
 }
-.tel-ecran::before {
-  content: ''; position: absolute; z-index: 5; top: 2.4%; left: 50%; width: 30%; height: 3.6%;
-  transform: translateX(-50%); background: var(--encre); border-radius: 999px;
-}
-.ecran {
-  position: absolute; inset: 0; padding: 17% 7% 7%; display: flex; flex-direction: column; gap: .7em;
+/* L'île et le trait d'accueil, par-dessus tous les écrans. */
+.tel-ecran::before, .tel-ecran::after { content: ''; position: absolute; z-index: 5; left: 50%; transform: translateX(-50%); background: var(--encre); border-radius: 999px; }
+.tel-ecran::before { top: 1.4%; width: 31%; height: 4%; }
+.tel-ecran::after { bottom: 1%; width: 35%; height: .33em; }
+.tel .ecran {
+  position: absolute; inset: 0; display: flex; flex-direction: column; background: var(--papier);
   opacity: 0; transform: translateY(4%) scale(.985);
   transition: opacity .55s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);
 }
-.ecran.actif { opacity: 1; transform: none; }
-.ecran-tete { display: flex; justify-content: space-between; align-items: baseline; gap: .5em; }
-.boutique { font-weight: 600; font-size: 1.2em; letter-spacing: -0.02em; }
-.puce { font-size: .62em; color: var(--gris); border: 1px solid var(--filet); border-radius: 99px; padding: .15em .6em; white-space: nowrap; }
-.ecran-sous { color: var(--gris); font-size: .78em; }
-.produit {
-  display: grid; grid-template-columns: 2.6em 1fr auto auto; gap: .6em; align-items: center;
-  padding: .5em; border-radius: .8em; background: var(--papier);
-}
-.produit.choisi { background: var(--blanc); box-shadow: 0 0 0 1.5px var(--encre); }
-.produit b { display: block; font-weight: 500; font-size: .9em; }
-.produit small { display: block; color: var(--gris); font-size: .7em; }
-.produit .prix { color: var(--gris); font-size: .78em; }
-.produit .qte { font-weight: 600; font-variant-numeric: tabular-nums; }
-.vignette { width: 2.6em; height: 2.6em; border-radius: .6em; }
-.v1 { background: radial-gradient(circle at 35% 35%, #f3c6cf 0 30%, #e59aab 31% 55%, #cfe3d0 56%); }
-.v2 { background: radial-gradient(circle at 60% 40%, #f7e3a8 0 25%, #f1b88a 26% 48%, #dfe8d2 49%); }
-.v3 { background: radial-gradient(circle, transparent 0 34%, #c9a878 35% 60%, #efe9df 61%); }
-.barre {
-  margin-top: auto; display: flex; justify-content: space-between; background: var(--encre); color: var(--blanc);
-  border-radius: 99px; padding: .8em 1.1em; font-weight: 500;
-}
-.wa-tete { display: flex; gap: .6em; align-items: center; padding-bottom: .6em; border-bottom: 1px solid var(--filet); }
-.wa-tete small { display: block; color: var(--gris); font-size: .72em; }
-.avatar { width: 2.2em; height: 2.2em; border-radius: 50%; background: #efe6f0; display: grid; place-items: center; font-weight: 600; font-size: .85em; }
-.wa-fond { flex: 1; background: #efeae2; margin: 0 -7.5% -7.5%; padding: 1em 7%; display: flex; flex-direction: column; justify-content: flex-end; gap: .5em; }
-.bulle { align-self: flex-end; max-width: 90%; background: #d9fdd3; border-radius: .9em .9em .2em .9em; padding: .7em .8em; font-size: .84em; }
-.bulle .ligne { display: block; }
-.bulle .total { font-weight: 600; margin-top: .3em; }
-.envoye { align-self: flex-end; font-size: .68em; color: var(--gris); }
-.carte-cmd { border-radius: 1em; padding: .9em; background: var(--papier); display: grid; gap: .3em; }
-.carte-cmd .source { font-size: .7em; color: var(--gris); }
-.carte-cmd .accepter { margin-top: .4em; border-radius: 99px; background: var(--encre); color: var(--blanc); text-align: center; padding: .55em; font-weight: 500; }
-.carte-cmd.acceptee { background: var(--blanc); box-shadow: 0 0 0 1.5px var(--encre); }
-.carte-cmd.acceptee .accepter { background: var(--papier); color: var(--encre); }
-.lignes { display: grid; font-size: .84em; }
-.lignes p { display: flex; justify-content: space-between; gap: .5em; padding: .5em 0; border-bottom: 1px solid var(--filet); }
-.lignes p span:last-child { font-weight: 500; font-variant-numeric: tabular-nums; }
-.chiffre b { display: block; font-size: 2.2em; font-weight: 600; letter-spacing: -0.035em; line-height: 1; }
-.chiffre span { color: var(--gris); font-size: .74em; }
-.fictif { margin-top: auto; font-size: .64em; color: var(--pale); }
+.tel .ecran.actif { opacity: 1; transform: none; }
+/* Pas de « .tel p { margin: 0 } » : le reset du site le fait déjà, et cette règle-là, plus
+   forte que `.t-etiq` ou `.t-btns`, collait les boutons à la ligne du dessus (vu le 16/09/2026). */
+.tel b { font-weight: 700; }
+.t-ic { width: 1.6em; height: 1.6em; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Ce qui revient d'un écran à l'autre : barre d'état, bandeau, étiquettes, cartes, onglets. */
+.t-etat { flex: none; height: 3.6em; display: flex; justify-content: space-between; align-items: center; padding: .4em 2.1em 0 2.8em; }
+.t-etat span { font-weight: 600; font-size: 1.07em; font-variant-numeric: tabular-nums; }
+.t-reseau { width: 2.7em; height: .8em; fill: currentColor; }
+.t-etat.sombre, .t-bandeau { background: var(--encre); color: var(--blanc); }
+.t-bandeau { flex: none; display: flex; justify-content: space-between; align-items: center; gap: .5em; padding: .3em 1.2em .95em; }
+.t-bandeau b { display: block; font-size: 1.4em; line-height: 1.15; letter-spacing: -0.01em; }
+.t-bandeau small { display: block; font-size: .83em; color: rgba(255,255,255,.66); }
+.tel .puce { font-size: .77em; color: var(--gris); background: var(--blanc); border: 1px solid var(--filet); border-radius: 99px; padding: .15em .65em; white-space: nowrap; }
+.t-bandeau .puce { background: transparent; color: rgba(255,255,255,.82); border-color: rgba(255,255,255,.3); }
+.t-defile { flex: 1; min-height: 0; overflow: hidden; padding: 0 1.07em; }
+.t-etiq { font-size: .87em; font-weight: 600; color: var(--gris); margin: 1.15em .15em .6em; }
+.t-carte { background: var(--blanc); border: 1px solid var(--filet); border-radius: 1.07em; padding: .85em .93em; margin-bottom: .67em; }
+.t-carte.forte { border: 1.5px solid var(--encre); }
+.t-ligne { display: flex; justify-content: space-between; align-items: baseline; gap: .5em; }
+.t-ligne b { font-size: 1.07em; }
+.t-m { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.t-s { color: var(--gris); font-size: .9em; }
+.t-prods { margin-top: .4em; }
+.t-prods span { display: block; }
+.t-btns { display: flex; gap: .53em; margin-top: .75em; }
+.t-btn { flex: 1; text-align: center; white-space: nowrap; border: 1.5px solid var(--encre); border-radius: .8em; padding: .65em .3em; font-weight: 600; font-size: .93em; }
+.t-btn.plein { background: var(--encre); color: var(--blanc); }
+.t-liv { display: flex; justify-content: space-between; gap: .5em; padding: .6em .15em; border-bottom: 1px solid var(--filet); font-size: .93em; }
+.t-liv span:last-child { color: var(--gris); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.t-onglets { flex: none; display: grid; grid-template-columns: repeat(5, 1fr); background: var(--blanc); border-top: 1px solid var(--filet); padding: .53em .3em 1.8em; }
+.t-onglets span { display: flex; flex-direction: column; align-items: center; gap: .15em; font-size: .77em; color: var(--pale); }
+.t-onglets .t-ic { width: 2.1em; height: 2.1em; }
+.t-onglets .on { color: var(--encre); font-weight: 600; }
+
+/* 0 — la boutique du client. */
+.t-boutique { flex: none; display: flex; justify-content: space-between; align-items: center; gap: .5em; padding: .2em 1.2em .67em; }
+.t-boutique .boutique { display: block; font-size: 1.33em; letter-spacing: -0.01em; }
+.t-boutique small, .t-note { display: block; font-size: .87em; color: var(--gris); }
+.t-jours { flex: none; display: flex; gap: .47em; padding: 0 1.07em .67em; }
+.t-jours span { flex: 1; text-align: center; white-space: nowrap; font-size: .8em; background: var(--blanc); border: 1px solid var(--filet); border-radius: .8em; padding: .45em .15em; }
+.t-jours b { display: block; font-size: 1.12em; }
+.t-jours .on { border: 1.5px solid var(--encre); }
+.t-jours .complet { color: var(--pale); text-decoration: line-through; }
+.tel .produit { display: grid; grid-template-columns: 6.1em 1fr; gap: .8em; align-items: start; background: var(--blanc); border: 1px solid var(--filet); border-radius: 1.07em; padding: .67em; margin-bottom: .67em; }
+.tel .produit.choisi { border: 1.5px solid var(--encre); }
+.tel .vignette { width: 6.1em; height: 6.1em; border-radius: .8em; background: var(--papier); display: grid; place-items: center; }
+.tel .vignette svg { width: 5.3em; height: 5.3em; fill: none; stroke: var(--encre); stroke-width: 2.2; stroke-linecap: round; }
+.t-prod b { display: block; font-size: 1.03em; padding-top: .15em; }
+.t-prod small { display: block; font-size: .83em; color: var(--gris); margin-top: .1em; }
+.t-bas { display: flex; justify-content: space-between; align-items: center; margin-top: .7em; }
+.t-bas .prix { font-weight: 700; font-variant-numeric: tabular-nums; }
+.t-pas { display: flex; align-items: center; gap: .75em; font-weight: 600; }
+.t-pas i { width: 2em; height: 2em; border-radius: 50%; border: 1.5px solid var(--encre); display: grid; place-items: center; font-style: normal; line-height: 1; }
+.t-pas i.plein { background: var(--encre); color: var(--blanc); }
+.t-note { margin: .2em .15em; }
+.tel .barre { flex: none; display: flex; justify-content: space-between; margin: .4em 1.07em 2.3em; padding: 1em 1.15em; border-radius: 1.07em; background: var(--encre); color: var(--blanc); font-weight: 600; font-size: 1.05em; }
+
+/* 1 — WhatsApp. Le seul écran qui garde des couleurs : le beige du fil et le vert de la
+   bulle sont ce qui fait reconnaître WhatsApp d'un coup d'œil (déjà là avant le 16/09/2026). */
+.tel .ecran[data-e="1"] { background: var(--blanc); }
+.wa-tete { flex: none; display: flex; align-items: center; gap: .65em; padding: .2em 1.07em .7em; background: var(--blanc); border-bottom: 1px solid var(--filet); }
+.wa-tete b { display: block; font-size: 1.07em; }
+.wa-tete small { display: block; font-size: .8em; color: var(--gris); }
+.t-retour { flex: none; width: .75em; height: .75em; margin: 0 .1em 0 .35em; border-left: 2px solid var(--encre); border-bottom: 2px solid var(--encre); transform: rotate(45deg); }
+.tel .avatar { flex: none; width: 2.6em; height: 2.6em; border-radius: 50%; background: var(--papier); border: 1px solid var(--filet); display: grid; place-items: center; font-weight: 700; font-size: .9em; }
+.wa-fond { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: flex-end; gap: .45em; padding: 1em 1.07em .6em; background: #efeae2; }
+.wa-jour { align-self: center; margin-bottom: .4em; font-size: .8em; color: var(--gris); background: var(--blanc); border-radius: .6em; padding: .25em .7em; }
+.tel .bulle { align-self: flex-end; max-width: 88%; font-size: 1.08em; background: #d9fdd3; border-radius: 1em 1em .25em 1em; padding: .7em .85em; }
+.tel .bulle .ligne { display: block; }
+.tel .bulle .total { font-weight: 600; margin-top: .3em; }
+.tel .envoye { align-self: flex-end; display: flex; align-items: center; gap: .3em; font-size: .8em; color: var(--gris); }
+.t-lu { width: 1.3em; height: 1.3em; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.wa-saisie { flex: none; display: flex; align-items: center; gap: .5em; padding: .45em .8em 2.3em; background: #efeae2; }
+.wa-saisie span { flex: 1; background: var(--blanc); border-radius: 99px; padding: .65em 1em; color: var(--pale); }
+.wa-saisie i { flex: none; width: 2.6em; height: 2.6em; border-radius: 50%; background: var(--encre); }
+
+/* 2 et 3 — l'agenda : la commande arrive, puis ce qu'un geste a créé. */
+.t-tuiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: .53em; margin-top: .8em; }
+.t-tuiles p { background: var(--blanc); border: 1px solid var(--filet); border-radius: .93em; padding: .6em .67em; }
+.t-tuiles b { display: block; font-size: 1.27em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.t-tuiles span { font-size: .8em; color: var(--gris); }
+.t-toast { display: flex; align-items: center; gap: .5em; margin: .8em 0 .2em; padding: .65em .9em; border-radius: .93em; background: var(--encre); color: var(--blanc); font-weight: 600; }
+.t-toast .t-ic { width: 1.3em; height: 1.3em; stroke-width: 2.6; }
+.t-toast + .t-carte { margin-top: .6em; }
+.t-chip { display: inline-flex; align-items: center; gap: .25em; margin-top: .6em; border: 1.5px solid var(--encre); border-radius: 99px; padding: .2em .75em .2em .45em; font-weight: 600; font-size: .87em; }
+.t-chip .t-ic { width: 1.25em; height: 1.25em; stroke-width: 2.6; }
+.t-faits { padding-top: .1em; padding-bottom: .1em; }
+.t-faits p { display: grid; grid-template-columns: 1.6em 1fr auto; align-items: center; gap: .6em; padding: .55em 0; border-bottom: 1px solid var(--filet); font-size: .95em; }
+.t-faits p:last-child { border-bottom: 0; }
+.t-faits .t-ic { width: 1.5em; height: 1.5em; }
+.t-faits b { white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* 4 — la synthèse. */
+.t-heros { margin: .93em 0 .67em; padding: 1.07em; border-radius: 1.2em; background: var(--encre); color: var(--blanc); }
+.t-heros small { display: block; font-size: .87em; color: rgba(255,255,255,.72); }
+.t-heros > b { display: block; font-size: 2.67em; line-height: 1.1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.t-barres { display: flex; align-items: flex-end; gap: .47em; height: 4.2em; margin-top: .6em; }
+.t-barres i { flex: 1; background: var(--blanc); border-radius: .27em .27em 0 0; }
+.t-jours7 { display: flex; gap: .47em; margin-top: .3em; }
+.t-jours7 span { flex: 1; text-align: center; font-size: .73em; color: rgba(255,255,255,.62); }
+.t-grand { display: block; font-size: 2em; line-height: 1.15; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.t-carte small.t-s { display: block; }
+.t-jauge { display: block; height: .4em; margin-top: .5em; border-radius: .2em; background: var(--filet); overflow: hidden; }
+.t-jauge i { display: block; height: 100%; background: var(--encre); }
 
 /* ── Rangées : le geste de la direction B ─────────────────────────────────── */
 .rangees { display: grid; gap: clamp(36px, 5vw, 64px); }

@@ -541,6 +541,11 @@ html.anime .avance i::after { content: ''; position: absolute; right: -4px; top:
 .garantie-corps { display: grid; gap: clamp(16px, 2vw, 28px); }
 .garantie-titre { max-width: 9.9em; }
 .garantie-texte { max-width: 30.8em; font-size: clamp(18px, 1.6vw, 22px); line-height: 1.45; }
+/* Ce que l'essai couvre (18/09/2026) : plus petit et plus pâle que la promesse
+   au-dessus — c'est la précision qui la borne, pas une seconde promesse. Le
+   contraste reste au-dessus du seuil : ce texte se lit, il ne se devine pas. */
+.garantie-couvre { max-width: 30.8em; margin-top: 0.7em; font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.45; color: var(--anthracite); }
 .garantie-points { margin-top: 16px; }
 .sec-seuil { background: var(--encre); color: var(--papier); padding: clamp(56px, 8vw, 110px) 0; }
 .seuil {

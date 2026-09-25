@@ -373,7 +373,7 @@ html.anime .avance i::after { content: ''; position: absolute; right: -4px; top:
 .t-jours span { flex: 1; text-align: center; white-space: nowrap; font-size: .8em; background: var(--blanc); border: 1px solid var(--filet); border-radius: .8em; padding: .45em .15em; }
 .t-jours b { display: block; font-size: 1.12em; }
 .t-jours .on { border: 1.5px solid var(--encre); }
-.t-jours .complet { color: var(--pale); text-decoration: line-through; }
+.t-jours .t-complet { color: var(--pale); text-decoration: line-through; }
 .tel .produit { display: grid; grid-template-columns: 6.1em 1fr; gap: .8em; align-items: start; background: var(--blanc); border: 1px solid var(--filet); border-radius: 1.07em; padding: .67em; margin-bottom: .67em; }
 .tel .produit.choisi { border: 1.5px solid var(--encre); }
 .tel .vignette { width: 6.1em; height: 6.1em; border-radius: .8em; background: var(--papier); display: grid; place-items: center; }

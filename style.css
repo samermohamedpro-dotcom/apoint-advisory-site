@@ -54,6 +54,12 @@
      papier (2,9 : 1) : elles ne servent qu'aux grands textes pâles qui
      s'animent vers l'encre. Le petit texte secondaire est en `--gris`. */
   --pale: #8a94a6;
+  /* LE CUIR DE SHEMSU — sa couleur à lui, en plus du point d'or (Samer, 25/09/2026 : « une
+     différence ou deux de Merkhet, c'est pas la mort » ; « cuir » pris contre « nuit », #1f3350,
+     sur captures). Le brun d'une sellerie de berline. Elle ne vit QUE dans le téléphone de
+     Shemsu — la couleur de son app — et sur le filet de sa colonne à l'accueil ; jamais un texte,
+     jamais un fond de page, jamais le point des logos, qui reste or (CHARTE.md § 3). */
+  --shemsu: #6b3a24;
   --filet: #e4e6ea;
 
   /* Les trois voix de la même police. Georama n'a pas de taille optique : la
@@ -596,3 +602,68 @@ html.anime .avance i::after { content: ''; position: absolute; right: -4px; top:
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition-duration: .001ms !important; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LE SITE AUX DEUX APPS — direction A, « côte à côte » (Samer, 25/09/2026)
+   ═══════════════════════════════════════════════════════════════════════════
+   Choisie sur captures contre B, « une porte par métier », dont les règles sont dans git
+   (commit 07d0fe1). Encre, blanc cassé, Georama seule, l'or au seul point des logos. */
+
+.logo-shemsu { height: clamp(30px, 2.8vw, 44px); }
+.hero-produit:has(.logo-shemsu) { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 6px 14px; }
+
+/* ── L'accueil : les deux systèmes côte à côte ──────────────────────────────────────────────────────── */
+.hero-deux { padding-bottom: clamp(32px, 4vw, 56px); }
+.hero-titre-deux { font-size: clamp(54px, 8.4vw, 140px); max-width: 11em; }
+.hero-deux .hero-sous { margin-top: clamp(20px, 2.4vw, 36px); max-width: 24em; }
+.paire { padding-top: 0; }
+.paire-grille { display: grid; gap: 64px; }
+@media (min-width: 900px) { .paire-grille { grid-template-columns: 1fr 1fr; gap: clamp(40px, 5vw, 96px); } }
+/* Le geste des rangées : un filet d'encre au-dessus de chaque système, et les deux à
+   égalité — même logo, même taille, même nombre de phrases. */
+.paire-col { border-top: 2px solid var(--encre); padding-top: clamp(22px, 2.4vw, 32px); display: flex; flex-direction: column; }
+.paire-logo a { display: inline-block; color: var(--encre); }
+.paire-logo .logo-merkhet { height: clamp(40px, 3.8vw, 60px); }
+.paire-pour { margin-top: 12px; color: var(--gris); font-size: 16px; }
+.paire-douleur { margin-top: clamp(22px, 2.6vw, 36px); }
+.paire-douleur p {
+  font-weight: 700; font-variation-settings: 'wdth' 62.5, 'wght' 700;
+  font-size: clamp(28px, 3vw, 46px); line-height: 1.02; letter-spacing: -0.015em;
+}
+.paire-tel { margin-top: clamp(32px, 4vw, 56px); display: flex; justify-content: center; }
+.paire-tel .tel { --w: clamp(220px, 20vw, 280px); }
+.paire-col .actions { margin-top: clamp(28px, 3vw, 40px); }
+
+
+/* ── Le téléphone de Shemsu — les briques du téléphone de Merkhet, plus quatre ── */
+.t-onglets.quatre { grid-template-columns: repeat(4, 1fr); }
+.t-avance { display: flex; gap: .35em; margin: .6em 0 1.1em; }
+.t-avance i { flex: 1; height: .3em; border-radius: 99px; background: var(--filet); }
+.t-avance i.on { background: var(--encre); }
+.t-question { font-weight: 700; font-size: 1.45em; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: .25em; }
+.t-choix { display: flex; justify-content: space-between; align-items: center; gap: .5em; margin-top: .7em;
+  background: var(--blanc); border: 1px solid var(--filet); border-radius: 1.07em; padding: 1em .95em; }
+.t-choix.on { border: 1.5px solid var(--encre); }
+.t-choix span { display: flex; align-items: center; gap: .55em; font-weight: 600; }
+.t-choix b { font-variant-numeric: tabular-nums; }
+.t-puces { display: flex; flex-wrap: wrap; gap: .35em; margin-top: .55em; }
+.t-puces span { font-size: .8em; border: 1px solid var(--filet); border-radius: 99px; padding: .15em .6em; }
+/* Le conflit : en ENCRE, gras, avec son triangle — l'app le dit en rouge, mais le rouge
+   est interdit par la charte (§ 3). Le trait gras et l'icône suffisent à l'œil. */
+.t-alerte { display: flex; align-items: flex-start; gap: .4em; margin-top: .55em; font-weight: 700; font-size: .87em; }
+.t-alerte .t-ic { flex: none; width: 1.3em; height: 1.3em; }
+
+/* La couleur de Shemsu : la couleur de SON APP, donc dans son téléphone — le bandeau, ce qui
+   est plein, ce qui est choisi, l'onglet actif — et le filet au-dessus de sa colonne. */
+.paire-shemsu { border-top-color: var(--shemsu); }
+/* La saisie de Shemsu vient sous l'échelle, séparée d'elle par de l'air : collée au filet, la
+   phrase « request page included » se lisait comme sa légende (vu le 25/09/2026). */
+.temps-shemsu { margin-top: clamp(36px, 4vw, 56px); }
+.temps-shemsu .point { max-width: 36em; }
+.tel-shemsu .t-etat.sombre, .tel-shemsu .t-bandeau { background: var(--shemsu); }
+.tel-shemsu .t-btn { border-color: var(--shemsu); }
+.tel-shemsu .t-btn.plein, .tel-shemsu .barre { background: var(--shemsu); border-color: var(--shemsu); }
+.tel-shemsu .t-carte.forte, .tel-shemsu .t-choix.on { border-color: var(--shemsu); }
+.tel-shemsu .t-avance i.on { background: var(--shemsu); }
+/* L'onglet ouvert reste à l'ENCRE : c'est un texte, et le cuir n'en colore jamais (charte § 3).
+   L'app fait de même (9-SHEMSU, 1bb0199) ; vu le 25/09/2026 par la session du produit. */

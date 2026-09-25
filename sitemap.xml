@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://apointadvisory.com/</loc></url>
+  <url><loc>https://apointadvisory.com/merkhet/</loc></url>
+  <url><loc>https://apointadvisory.com/shemsu/</loc></url>
   <url><loc>https://apointadvisory.com/pricing/</loc></url>
   <url><loc>https://apointadvisory.com/system/</loc></url>
   <url><loc>https://apointadvisory.com/faq/</loc></url>
   <url><loc>https://apointadvisory.com/about/</loc></url>
   <url><loc>https://apointadvisory.com/start/</loc></url>
   <url><loc>https://apointadvisory.com/fr/</loc></url>
+  <url><loc>https://apointadvisory.com/fr/merkhet/</loc></url>
+  <url><loc>https://apointadvisory.com/fr/shemsu/</loc></url>
   <url><loc>https://apointadvisory.com/fr/tarifs/</loc></url>
   <url><loc>https://apointadvisory.com/fr/systeme/</loc></url>
   <url><loc>https://apointadvisory.com/fr/questions/</loc></url>
